@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Flash{% endblock %}
+
+{% block body %}
+    <h1>Flash</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ flash.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ flash.name }}</td>
+            </tr>
+            <tr>
+                <th>Photo</th>
+                <td><img src="/assets/flash/{{ flash.photo }}" height="500" alt={{ flash.name }}/></td>
+            </tr>
+            <tr>
+                <th>Reservé</th>
+                <td>{{ flash.reserved ? 'Oui' : 'Non' }}</td>
+            </tr>
+            <tr>
+                <th>En ligne</th>
+                <td>{{ flash.online ? 'Oui' : 'Non' }}</td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('flash_index') }}"> Retour à la liste</a>
+
+    <a href="{{ path('flash_edit', {'id': flash.id}) }}">Modifier</a>
+
+    {{ include('admin/flash/_delete_form.html.twig') }}
+{% endblock %}
