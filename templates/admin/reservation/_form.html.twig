@@ -1,79 +1,75 @@
 {{ form_start(form) }}
 
-<div class="row">
-    <form class="col s12">
-      <div class="row">
-        <div class="input-field col s6">
-            <div class="value-label">{{ form_label(form.firstname, 'Prénom') }}</div>
-                <div> {{ form_widget(form.firstname, {'attr': {'class': 'widget'}}) }} </div>
-                <div class="form-error">
-                    {{ form_errors(form.firstname) }}
-            </div>
-            </div>
-        </div>
+<div>
+
+    <div class="value-label">{{ form_label(form.firstname, 'Prénom') }}</div>
+        <div> {{ form_widget(form.firstname, {'attr': {'class': 'widget'}}) }} </div>
+        <div class="form-error">
+        {{ form_errors(form.firstname) }}
+    </div>
 
     <div class="value-label">{{ form_label(form.lastname, 'Nom') }}</div>
         <div> {{ form_widget(form.lastname, {'attr': {'class': 'widget'}}) }} </div>
         <div class="form-error">
             {{ form_errors(form.lastname) }}
        </div>
-    </div>
+
 
     <div class="value-label">{{ form_label(form.pronoun, 'Pronom') }}</div>
         <div> {{ form_widget(form.pronoun, {'attr': {'class': 'widget'}}) }} </div>
         <div class="form-error">
             {{ form_errors(form.pronoun) }}
        </div>
-    </div>
 
-    <div class="value-label">{{ form_label(form.major, 'Majeur?') }}</div>
-        <div> {{ form_widget(form.major, {'attr': {'class': 'widget'}}) }} </div>
-        <div class="form-error">
-            {{ form_errors(form.major) }}
-       </div>
-    </div>
 
-    <div class="value-label">{{ form_label(form.firstTatoo, 'Premier Tatoo?') }}</div>
-        <div> {{ form_widget(form.firstTatoo, {'attr': {'class': 'widget'}}) }} </div>
+    <div class="value-label">{{ form_label(form.email, 'Email') }}</div>
+        <div> {{ form_widget(form.email, {'attr': {'class': 'widget'}}) }} </div>
         <div class="form-error">
-            {{ form_errors(form.firstTatoo) }}
+            {{ form_errors(form.email) }}
        </div>
-    </div>
+
+
+    <div class="value-label">{{ form_label(form.telephone, 'Téléphone') }}</div>
+        <div> {{ form_widget(form.telephone, {'attr': {'class': 'widget'}}) }} </div>
+        <div class="form-error">
+            {{ form_errors(form.telephone) }}
+       </div>
+
+
 
     <div class="value-label">{{ form_label(form.location, 'Emplacement souhaité') }}</div>
         <div> {{ form_widget(form.location, {'attr': {'class': 'widget'}}) }} </div>
         <div class="form-error">
             {{ form_errors(form.location) }}
        </div>
-    </div>
+
 
     <div class="value-label">{{ form_label(form.size, 'Taille (en cm)') }}</div>
         <div> {{ form_widget(form.size, {'attr': {'class': 'widget'}}) }} </div>
         <div class="form-error">
             {{ form_errors(form.size) }}
        </div>
-    </div>
 
     <div class="value-label">{{ form_label(form.date, 'Date souhaitée') }}</div>
         <div> {{ form_widget(form.date, {'attr': {'class': 'widget'}}) }} </div>
         <div class="form-error">
             {{ form_errors(form.date) }}
        </div>
-    </div>
+
 
     <div class="value-label" type="radio">{{ form_label(form.accepted, 'Réservation acceptée') }}</div>
         <div> {{ form_widget(form.accepted, {'attr': {'class': 'widget'}}) }} </div>
         <div class="form-error">
             {{ form_errors(form.accepted) }}
        </div>
-    </div>
+
 
      <div class="value-label">{{ form_label(form.flash, 'Flash') }}</div>
         <div> {{ form_widget(form.flash, {'attr': {'class': 'widget'}}) }} </div>
         <div class="form-error">
             {{ form_errors(form.flash) }}
        </div>
-    </div>
+
 
 
     <button class="btn">{{ button_label|default('Enregistrer') }}</button>

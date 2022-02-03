@@ -42,6 +42,7 @@ class Category
     public function __construct()
     {
         $this->flashes = new ArrayCollection();
+        $this->photoFile = null;
     }
 
     public function getId(): ?int

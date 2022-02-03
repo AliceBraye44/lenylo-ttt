@@ -25,17 +25,23 @@
     </head>
     <body>
 
-        <nav class="nav-extended deep-purple lighten-2">
+        <nav class="nav-extended deep-purple lighten-2 nav-admin">
             <div class="nav-wrapper">
             <a href="#!" class="brand-logo"><img src="/assets/flamblanche.png" height="150"></a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="{{ path('flash_index') }}">Flash</a></li>
                 <li><a href="{{ path('category_index') }}">Categories</a></li>
-                <li><a href="{{ path('admin_reservation_index') }}">Réservation</a></li>
+                <li><a href="{{ path('admin_reservation_index') }}">Réservations</a></li>
+                <li><a href="{{ path('home') }}">Mon site</a></li>
+                {% if app.user %}
+            <li class="nav-item"> <a class="nav-link" href="{{ path('app_logout') }}"> Se déconnecter ({{ app.user.email }} )</a></li>
+        {% else %}
+            <li class="nav-item"> <a  class="nav-link" href="{{ path('login') }}"> Se connecter</a></li>
+        {% endif %}
             </ul>
             </div>
             <div class="nav-content">
-            <span class="nav-title text-white"> {% block h1 %} {% endblock %}</span>
+            <span class="nav-title"> {% block h1 %} {% endblock %}</span>
 
             </div>
         </nav>

@@ -17,8 +17,6 @@ class ReservationType extends AbstractType
             ->add('pronoun')
             ->add('email')
             ->add('telephone')
-            ->add('major')
-            ->add('firstTatoo')
             ->add('location')
             ->add('size')
             ->add('date')

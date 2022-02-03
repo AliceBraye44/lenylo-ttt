@@ -49,6 +49,8 @@ class Flash
     public function __construct()
     {
         $this->reservations = new ArrayCollection();
+        $this->photoFile = null;
+
     }
 
     public function getId(): ?int
