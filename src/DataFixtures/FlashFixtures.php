@@ -6,8 +6,9 @@ use Faker\Factory;
 use App\Entity\Flash;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
-class FlashFixtures extends Fixture
+class FlashFixtures extends Fixture implements DependentFixtureInterface
 {
 
     protected $faker;

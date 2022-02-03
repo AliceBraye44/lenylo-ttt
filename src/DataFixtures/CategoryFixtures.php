@@ -14,17 +14,24 @@ class CategoryFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $this->faker = Factory::create();
+        $category = new Category();
+        $category->setName($this->faker->name);
+        $category->setDescription('Possimus omnis aut incidunt sunt. Asperiores incidunt iure sequi cum culpa rem.');
+        $this->addReference('category_'. 0, $category);
 
-        for ($i=0; $i<3; $i++){
+        $manager->persist($category);
+        $manager->flush();
+    }
+
+
+      /*  for ($i=0; $i<3; $i++){
             $category = new Category();
             $category->setName($this->faker->name);
-            //$category->setDescription($this->faker->sentence($nbWords = 8, $variableNbWords = true));
             $category->setDescription('Possimus omnis aut incidunt sunt. Asperiores incidunt iure sequi cum culpa rem.');
             $this->addReference('category_'. $i, $category);
 
             $manager->persist($category);
-        }
+        }*/
 
-        $manager->flush();
     }
-}
+

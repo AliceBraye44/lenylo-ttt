@@ -1,17 +1,38 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Tous mes flahs{% endblock %}
+{% block title %}Tous mes flash{% endblock %}
+
+{% block h1 %} <h1>Tous mes flash</h1>{% endblock %}
 
 {% block body %}
-    <h1>Tous mes flahs</h1>
+<div class="main">
+     <a href="{{ path('flash_new') }}" class="btn-floating btn-large waves-effect waves-light black"><i class="material-icons">add</i></a>
+
+   <div class="nav-wrapper">
+    {{ form_start(form) }}
+
+    <div class="searchbar">
+        <div class="input-field">
+
+            {{ form_widget(form.search, {'attr': {'class': 'widget'}}) }}
+            {{ form_errors(form.search) }}
+             <i class="material-icons">close</i>
+        </div>
+        <div> <button id="search" class="btn-floating btn-large waves-effect waves-light black"><i class="material-icons">search</i></button><div>
+
+    </div>
+ </div>
+    {{ form_end(form) }}
+    </div>
+
 
     <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Image</th>
                 <th>Nom</th>
                 <th>Categorie</th>
-                <th>Photo</th>
                 <th>Reservé</th>
                 <th>En ligne</th>
                 <th>actions</th>
@@ -20,15 +41,17 @@
         <tbody>
         {% for flash in flashes %}
             <tr>
-                <td>{{ flash.id }}</td>
+                <td>{{loop.index}}</td>
+                {#<td><img src="{{ vich_uploader_asset(flash) }}"  width="150" height='220' ></td>#}
+
+                <td> <img src="/assets/flash/{{flash.photo }}" alt="{{ flash.name }}" width="250"></td>
                 <td>{{ flash.name }}</td>
                 <td>{{ flash.category.name }}</td>
-                <td><img src="/assets/flash/{{ flash.photo }}" height="200" alt={{ flash.name }}/></td>
-                <td>{{ flash.reserved ? 'Yes' : 'No' }}</td>
-                <td>{{ flash.online ? 'Yes' : 'No' }}</td>
+                <td>{{ flash.reserved ? 'Oui' : 'Non' }}</td>
+                <td>{{ flash.online ? 'Oui' : 'Non' }}</td>
                 <td>
-                    <a href="{{ path('flash_show', {'id': flash.id}) }}">Voir</a>
-                    <a href="{{ path('flash_edit', {'id': flash.id}) }}">Modifier</a>
+                    <a href="{{ path('flash_show', {'id': flash.id}) }}"><i class="material-icons">remove_red_eye</i></a>
+                    <a href="{{ path('flash_edit', {'id': flash.id}) }}"><i class="material-icons">edit</i></a>
                     {{ include('admin/flash/_delete_form.html.twig') }}
                 </td>
             </tr>
@@ -39,6 +62,6 @@
         {% endfor %}
         </tbody>
     </table>
+</div>
 
-    <a href="{{ path('flash_new') }}">Ajouter un nouveau flash</a>
 {% endblock %}

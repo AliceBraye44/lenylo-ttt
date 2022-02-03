@@ -1,4 +1,43 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+
+    <div>
+
+
+        <div>
+            {{ form_label(form.name, 'Nom') }}
+            {{ form_widget(form.name, {'attr': {'class': 'widget'}}) }}
+        </div>
+
+
+            {{ form_label(form.photoFile, 'Photo') }}
+            {{ form_widget(form.photoFile, {'attr': {'class':'file-path validaten'}}) }}
+
+
+            {{ form_label(form.reserved, 'Réservé') }}
+            {{ form_widget(form.reserved, {'attr': {'class': 'widget'}}) }}
+
+
+            {{ form_label(form.online, 'En ligne?') }}
+            {{ form_widget(form.online, {'attr': {'class': 'widget'}}) }}
+
+
+
+        {{ form_label(form.category, 'Catégorie') }}
+
+        <div>
+                {% for checkbox in form.category.children %}
+                     {{ form_label(checkbox) }}
+                     {{ form_widget(checkbox, {'attr': {'class': 'filled-in'}}) }}
+                {% endfor %}
+        </div>
+
+        </div>
+
+</div>
+
     <button class="btn">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

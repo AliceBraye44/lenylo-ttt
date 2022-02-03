@@ -2,12 +2,18 @@
 
 namespace App\Entity;
 
-use App\Repository\CategoryRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\CategoryRepository;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use DateTime;
+use Symfony\Component\Validator\Constraints as Assert;
 
-#[ORM\Entity(repositoryClass: CategoryRepository::class)]
+
+#[ORM\Entity]
+#[Vich\Uploadable]
 class Category
 {
     #[ORM\Id]
@@ -24,8 +30,11 @@ class Category
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $photo;
 
+    #[Vich\UploadableField(mapping: 'category_file', fileNameProperty: 'photo')]
+    private ?File $photoFile;
+
     #[ORM\Column(type: 'datetime', nullable: true)]
-    private $updated_at;
+    private $updatedAt;
 
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Flash::class)]
     private $flashes;
@@ -76,14 +85,27 @@ class Category
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function setPhotoFile(File $photo = null)
     {
-        return $this->updated_at;
+        $this->photoFile = $photo;
+        if ($photo) {
+            $this->updatedAt = new DateTime('now');
+        }
     }
 
-    public function setUpdatedAt(?\DateTimeInterface $updated_at): self
+    public function getPhotoFile(): ?File
     {
-        $this->updated_at = $updated_at;
+        return $this->photoFile;
+    }
+
+    public function getUpdatedAt(): ?\DateTime
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTime $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

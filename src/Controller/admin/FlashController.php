@@ -4,6 +4,7 @@ namespace App\Controller\admin;
 
 use App\Entity\Flash;
 use App\Form\FlashType;
+use App\Form\SearchBarType;
 use App\Repository\FlashRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,11 +15,23 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/admin/flash')]
 class FlashController extends AbstractController
 {
-    #[Route('/', name: 'flash_index', methods: ['GET'])]
-    public function index(FlashRepository $flashRepository): Response
+    #[Route('/', name: 'flash_index', methods: ['GET','POST'])]
+    public function index(Request $request, FlashRepository $flashRepository): Response
     {
+
+        $form = $this->createForm(SearchBarType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $search = $form->getData()['search'];
+            $flashes = $flashRepository->findLikeName($search);
+        } else {
+            $flashes = $flashRepository->findAll();
+        }
+
         return $this->render('admin/flash/index.html.twig', [
-            'flashes' => $flashRepository->findAll(),
+            'flashes' => $flashes,
+            'form' => $form->createView(),
         ]);
     }
 
@@ -38,7 +51,7 @@ class FlashController extends AbstractController
 
         return $this->renderForm('admin/flash/new.html.twig', [
             'flash' => $flash,
-            'form' => $form,
+            'form' => $form
         ]);
     }
 

@@ -1,39 +1,104 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Flash{% endblock %}
+{% block h1 %} <h1>Flash</h1>{% endblock %}
 
 {% block body %}
-    <h1>Flash</h1>
+<div class="main show-flash">
+
+<div class="card-flash">
+    <h3> Flash détails </h3>
+   <div class="row">
+    <div class="">
+        <div class="card">
+            <div class="card-image">
+            <img src="/assets/flash/{{ flash.photo }}" height="500" alt={{ flash.name }}/>
+            <span class="card-title">Card Title</span>
+            <a class="btn-floating halfway-fab waves-effect waves-light black"  href="{{ path('flash_edit', {'id': flash.id}) }}"><i class="material-icons">edit</i></a>
+
+            </div>
+            <div class="card-content">
+
+
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ flash.id }}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ flash.name }}</td>
+                </tr>
+
+                <tr>
+                    <th>Reservé</th>
+                    <td>{{ flash.reserved ? 'Oui' : 'Non' }}</td>
+                </tr>
+                <tr>
+                    <th>En ligne</th>
+                    <td>{{ flash.online ? 'Oui' : 'Non' }}</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        </div>
+        </div>
+        </div>
+    </div>
+
+
+        <a href="{{ path('flash_index') }}" class="btn black"> Retour à la liste</a>
+
+
+        {{ include('admin/flash/_delete_form.html.twig') }}
+</div>
+
+    <div class="flash-resa">
+
+    <h3> Mes réservations </h3>
+
 
     <table class="table">
-        <tbody>
+        <thead>
             <tr>
-                <th>Id</th>
-                <td>{{ flash.id }}</td>
-            </tr>
-            <tr>
+                <th>Flash</th>
+                <th>Prénom</th>
                 <th>Nom</th>
-                <td>{{ flash.name }}</td>
+                <th>Pronom</th>
+                <th>Est majeur?</th>
+                <th>Premier Tatoo?</th>
+                <th>Emplacement</th>
+                <th>Taille</th>
+                <th>Date</th>
+                <th>Accepté</th>
+                <th>Actions</th>
             </tr>
+        </thead>
+        <tbody>
+    {% for reservation in flash.reservations %}
             <tr>
-                <th>Photo</th>
-                <td><img src="/assets/flash/{{ flash.photo }}" height="500" alt={{ flash.name }}/></td>
-            </tr>
-            <tr>
-                <th>Reservé</th>
-                <td>{{ flash.reserved ? 'Oui' : 'Non' }}</td>
-            </tr>
-            <tr>
-                <th>En ligne</th>
-                <td>{{ flash.online ? 'Oui' : 'Non' }}</td>
+                <td>{{ reservation.flash.name }}</td>
+                <td>{{ reservation.firstname }}</td>
+                <td>{{ reservation.lastname }}</td>
+                <td>{{ reservation.pronoun }}</td>
+                <td>{{ reservation.major ? 'Oui' : 'Non' }}</td>
+                <td>{{ reservation.firstTatoo ? 'Oui' : 'Non' }}</td>
+                <td>{{ reservation.location }}</td>
+                <td>{{ reservation.size }}</td>
+                <td>{{ reservation.date ? reservation.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ reservation.accepted ? 'Oui' : 'Non' }}</td>
+                <td>
+                    <a href="{{ path('admin_reservation_show', {'id': reservation.id}) }}"><i class="material-icons">remove_red_eye</i></a>
+                    <a href="{{ path('admin_reservation_edit', {'id': reservation.id}) }}"><i class="material-icons">edit</i></a>
+                </td>
             </tr>
 
-        </tbody>
+    {% endfor %}
     </table>
 
-    <a href="{{ path('flash_index') }}"> Retour à la liste</a>
 
-    <a href="{{ path('flash_edit', {'id': flash.id}) }}">Modifier</a>
-
-    {{ include('admin/flash/_delete_form.html.twig') }}
+    </div>
+</div>
 {% endblock %}

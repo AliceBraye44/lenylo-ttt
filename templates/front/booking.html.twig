@@ -1,0 +1,84 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Booking{% endblock %}
+
+{% block body %}
+
+<div class="main">
+
+    <h1> Demande de réservation </h1>
+
+    <div class="booking">
+
+        <div><img src="/assets/flash/{{flash.photo}}" height="350" class="z-depth-5 materialboxed" ></div>
+
+
+        <div class="form-booking">
+
+
+
+            {{ form_start(form) }}
+
+
+                        <div>
+                    <div class="value-label">{{ form_label(form.firstname) }}</div>
+                        <div> {{ form_widget(form.firstname, {'attr': {'class': 'widget'}}) }} </div>
+                        <div class="form-error">
+                            {{ form_errors(form.firstname) }}
+                    </div>
+                    </div>
+
+            <div class="value-label">{{ form_label(form.lastname) }}</div>
+                <div> {{ form_widget(form.lastname, {'attr': {'class': 'widget'}}) }} </div>
+                <div class="form-error">
+                    {{ form_errors(form.lastname) }}
+            </div>
+
+
+            <div class="value-label">{{ form_label(form.pronoun) }}</div>
+                <div> {{ form_widget(form.pronoun, {'attr': {'class': 'widget'}}) }} </div>
+                <div class="form-error">
+                    {{ form_errors(form.pronoun) }}
+            </div>
+
+
+            <div class="value-label">{{ form_label(form.email) }}</div>
+                <div> {{ form_widget(form.email, {'attr': {'class': 'widget'}}) }} </div>
+                <div class="form-error">
+                    {{ form_errors(form.email) }}
+            </div>
+
+
+             <div>{{ form_label(form.telephone) }}</div>
+                <div> {{ form_widget(form.telephone, {'attr': {'class': 'widget'}}) }} </div>
+                <div class="form-error">
+                    {{ form_errors(form.telephone) }}
+            </div>
+
+
+
+
+            <div class="value-label">{{ form_label(form.location) }}</div>
+                <div> {{ form_widget(form.location, {'attr': {'class': 'filled-in'}}) }} </div>
+                <div class="form-error">
+                    {{ form_errors(form.location) }}
+            </div>
+
+
+            <div class="value-label">{{ form_label(form.size)}}</div>
+                <div> {{ form_widget(form.size, {'attr': {'class': 'widget'}}) }} </div>
+                <div class="form-error">
+                    {{ form_errors(form.size) }}
+            </div>
+
+            <button class="btn indigo lighten-1"> ENVOYER <i class="material-icons right">send</i></button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}
+

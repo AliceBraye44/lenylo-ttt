@@ -11,12 +11,9 @@ use Symfony\Component\HttpFoundation\File\File;
 use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
-use Vich\UploaderBundle\Entity\File as EmbeddedFile;
 
 
-
-
-#[ORM\Entity(repositoryClass: FlashRepository::class)]
+#[ORM\Entity]
 #[Vich\Uploadable]
 class Flash
 {
@@ -28,20 +25,11 @@ class Flash
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $name;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $photo;
 
-    /**
-     *
-     * @Vich\UploadableField(mapping="flash_file", fileNameProperty="photo")
-     * * @Assert\File(
-     *     maxSize = "5M",
-     *     mimeTypes = {"image/jpeg", "image/png", "image/webp"},
-     * )
-     * @var File|null
-     */
+    #[Vich\UploadableField(mapping: 'flash_file', fileNameProperty: 'photo')]
     private ?File $photoFile;
-
 
     #[ORM\Column(type: 'boolean', nullable: true)]
     private $reserved;
@@ -50,7 +38,7 @@ class Flash
     private $online;
 
     #[ORM\Column(type: 'datetime', nullable: true)]
-    private $updated_at;
+    private $updatedAt;
 
     #[ORM\OneToMany(mappedBy: 'flash', targetEntity: Reservation::class)]
     private $reservations;
@@ -85,14 +73,14 @@ class Flash
         return $this->photo;
     }
 
-    public function setPhoto(string $photo): self
+    public function setPhoto(?string $photo): self
     {
         $this->photo = $photo;
 
         return $this;
     }
 
-    public function setPhotoFile(File $photo = null): void
+    public function setPhotoFile(File $photo = null)
     {
         $this->photoFile = $photo;
         if ($photo) {
@@ -129,12 +117,12 @@ class Flash
         return $this;
     }
 
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updated_at;
     }
 
-    public function setUpdatedAt(?\DateTimeInterface $updated_at): self
+    public function setUpdatedAt(?\DateTime $updated_at): self
     {
         $this->updated_at = $updated_at;
 

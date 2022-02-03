@@ -1,0 +1,23 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Categories{% endblock %}
+{% block h1 %} <h1>Gérer mes catégories</h1>{% endblock %}
+{% block body %}
+
+<div class="main">
+
+    {% for category in categories %}
+<a href="{{ path('category', {'id': category.id}) }}">
+        <div>{{ category.name }}</div>
+        <div>{{ category.description }}</div>
+</a>
+
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+
+</div>
+
+{% endblock %}

@@ -3,12 +3,6 @@ html,body{
 	height: 100%;
   }
 
-  .container{
-	padding: 75px 0;
-	margin: 0 auto;
-	width: 1140px;
-  }
-
   h1{
 	position: relative;
 	margin-bottom: 45px;
@@ -39,12 +33,9 @@ html,body{
   }
 
   .item-1 {
-	background-image: url('https://images.unsplash.com/photo-1499198116522-4a6235013d63?auto=format&fit=crop&w=1233&q=80');
+	background-image: url('https://images.unsplash.com/photo-1565058379802-bbe93b2f703a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
   }
 
-  .item-2 {
-	background-image: url('https://images.unsplash.com/photo-1492760864391-753aaae87234?auto=format&fit=crop&w=1336&q=80');
-  }
 
   .item-3 {
 	background-image: url('https://images.unsplash.com/photo-1503631285924-e1544dce8b28?auto=format&fit=crop&w=1234&q=80');
@@ -62,9 +53,101 @@ html,body{
 	position: absolute;
 	right: 35px;
 	bottom: 0;
-
-	img{
-	  display: block;
-	  width: 32px;
-	}
   }
+
+
+.main{
+	margin:  5rem;
+}
+
+
+
+.searchbar{
+	display: flex;
+	justify-content: flex-start;
+}
+
+.front-flash{
+	display: flex;
+	flex-wrap: wrap;
+	gap: 2rem;
+	margin-bottom: 5rem ;
+}
+
+.intro{
+	height: 500px;
+	background-color: black;
+	display: flex;
+}
+
+
+.booking{
+	display: flex;
+	gap: 3rem;
+	justify-content:space-around;
+}
+
+.form-booking{
+	width: 70%;
+}
+.text-intro{
+	color: white;
+	padding-left: 4rem;
+}
+
+.text-intro h1{
+	padding-top: 2em;
+	color: white;
+}
+
+
+.intro img{
+	height: 600px;
+	object-fit: cover;
+	transform-origin: center;
+    transform: scale(1);
+    transition-duration: .5s;
+}
+
+.intro img:hover{
+	-webkit-transform: scale(1.10);
+    -moz-transform: scale(1.10);
+    -ms-transform: scale(1.10);
+    -o-transform: scale(1.10);
+    transform: scale(1.10);
+}
+
+.all-categories{
+	display:flex;
+	margin-left: auto;
+	margin-right: auto;
+	flex-wrap: wrap;
+	gap: 1rem;	}
+
+.card-index{
+	width: 30%;
+
+
+}
+.img-index{
+	object-fit: cover;
+	height: 500px;
+}
+.flash-index{
+	text-align:center;
+}
+
+.main-index{
+	margin-left: 5rem;
+	margin-right: 5rem;
+}
+
+.end-flashs{
+	display: flex;
+	justify-content:  center;
+}
+
+.show-flash{
+	display: flex;
+	justify-content:space-around;
+}

@@ -1,0 +1,38 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}Flash à adopter{% endblock %}
+
+{% block body %}
+<div class="main">
+
+<h1 class="black-text">{{ category.name }}</h1>
+
+    <p> {{ category.description }}</p>
+
+
+    <div>
+
+        <h4> Flash à adopter </h4>
+
+        <div class="front-flash">
+
+            {% for flash in category.flashes %}
+
+                <div class="flash">
+                    <h5> {{flash.name}} </h5>
+                    <div class="col s12 m2">
+                        <img src="/assets/flash/{{flash.photo}}" height="350" class="z-depth-5 materialboxed" >
+                        <a class="btn-floating btn-large waves-effect  waves-light pulse indigo lighten-1" href="{{ path('booking', {'category_id':category.id, 'flash_id': flash.id} ) }}"><i class="material-icons">insert_invitation</i></a>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <a href="{{ path('home') }}" class='btn 5c6bc0 indigo lighten-1'>Retour</a>
+
+
+</div>
+{% endblock %}

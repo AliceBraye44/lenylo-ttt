@@ -1,13 +1,64 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Modifier le flash {{flash.name }}{% endblock %}
+{% block h1 %} <h1>Modifier le flash {{flash.name }}</h1>{% endblock %}
 
 {% block body %}
-    <h1>Modifier le flash {{flash.name }}</h1>
+<div class="main ">
+<div>
 
     {{ include('admin/flash/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
     <a href="{{ path('flash_index') }}">Retour à la liste</a>
 
     {{ include('admin/flash/_delete_form.html.twig') }}
+
+<div>
+
+<div class="flash-resa">
+
+    <h3> Mes réservations </h3>
+
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Flash</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Pronom</th>
+                <th>Est majeur?</th>
+                <th>Premier Tatoo?</th>
+                <th>Emplacement</th>
+                <th>Taille</th>
+                <th>Date</th>
+                <th>Accepté</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for reservation in flash.reservations %}
+            <tr>
+                <td>{{ reservation.flash.name }}</td>
+                <td>{{ reservation.firstname }}</td>
+                <td>{{ reservation.lastname }}</td>
+                <td>{{ reservation.pronoun }}</td>
+                <td>{{ reservation.major ? 'Oui' : 'Non' }}</td>
+                <td>{{ reservation.firstTatoo ? 'Oui' : 'Non' }}</td>
+                <td>{{ reservation.location }}</td>
+                <td>{{ reservation.size }}</td>
+                <td>{{ reservation.date ? reservation.date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ reservation.accepted ? 'Oui' : 'Non' }}</td>
+                <td>
+                    <a href="{{ path('admin_reservation_show', {'id': reservation.id}) }}"><i class="material-icons">remove_red_eye</i></a>
+                    <a href="{{ path('admin_reservation_edit', {'id': reservation.id}) }}"><i class="material-icons">edit</i></a>
+                </td>
+            </tr>
+
+    {% endfor %}
+    </table>
+
+
+    </div>
+</div>
 {% endblock %}

@@ -22,7 +22,7 @@ class Reservation
     #[ORM\Column(type: 'string', length: 255)]
     private $pronoun;
 
-    #[ORM\Column(type: 'boolean')]
+    #[ORM\Column(type: 'boolean', nullable: true)]
     private $major;
 
     #[ORM\Column(type: 'boolean', nullable: true)]
@@ -42,6 +42,12 @@ class Reservation
 
     #[ORM\ManyToOne(targetEntity: Flash::class, inversedBy: 'reservations')]
     private $flash;
+
+    #[ORM\Column(type: 'string', length: 255)]
+    private $email;
+
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $telephone;
 
     public function getId(): ?int
     {
@@ -89,7 +95,7 @@ class Reservation
         return $this->major;
     }
 
-    public function setMajor(bool $major): self
+    public function setMajor(?bool $major): self
     {
         $this->major = $major;
 
@@ -164,6 +170,30 @@ class Reservation
     public function setFlash(?Flash $flash): self
     {
         $this->flash = $flash;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getTelephone(): ?string
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(?string $telephone): self
+    {
+        $this->telephone = $telephone;
 
         return $this;
     }

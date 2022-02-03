@@ -1,51 +1,57 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Reservation index{% endblock %}
+{% block title %}Réservations{% endblock %}
 
+
+
+{% block h1 %} <h1>Toutes mes demandes de Réservations</h1>{% endblock %}
 {% block body %}
-    <h1>Reservation index</h1>
+<div class="main">
+    <a href="{{ path('admin_reservation_new') }}" class="btn-floating btn-large waves-effect waves-light black"><i class="material-icons">add</i></a>
+
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Pronoun</th>
-                <th>Major</th>
-                <th>FirstTatoo</th>
-                <th>Location</th>
-                <th>Size</th>
+                <th>Flash</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Pronom</th>
+                <th>Est majeur?</th>
+                <th>Premier Tatoo?</th>
+                <th>Emplacement</th>
+                <th>Taille</th>
                 <th>Date</th>
-                <th>Accepted</th>
-                <th>actions</th>
+                <th>Accepté</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for reservation in reservations %}
             <tr>
-                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.flash.name }}</td>
                 <td>{{ reservation.firstname }}</td>
                 <td>{{ reservation.lastname }}</td>
                 <td>{{ reservation.pronoun }}</td>
-                <td>{{ reservation.major ? 'Yes' : 'No' }}</td>
-                <td>{{ reservation.firstTatoo ? 'Yes' : 'No' }}</td>
+                <td>{{ reservation.major ? 'Oui' : 'Non' }}</td>
+                <td>{{ reservation.firstTatoo ? 'Oui' : 'Non' }}</td>
                 <td>{{ reservation.location }}</td>
                 <td>{{ reservation.size }}</td>
                 <td>{{ reservation.date ? reservation.date|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ reservation.accepted ? 'Yes' : 'No' }}</td>
+                <td>{{ reservation.accepted ? 'Oui' : 'Non' }}</td>
                 <td>
-                    <a href="{{ path('reservation_show', {'id': reservation.id}) }}">show</a>
-                    <a href="{{ path('reservation_edit', {'id': reservation.id}) }}">edit</a>
+                    <a href="{{ path('admin_reservation_show', {'id': reservation.id}) }}"><i class="material-icons">remove_red_eye</i></a>
+                    <a href="{{ path('admin_reservation_edit', {'id': reservation.id}) }}"><i class="material-icons">edit</i></a>
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="11">no records found</td>
+                <td colspan="11">Aucune réservation en cours</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('reservation_new') }}">Create new</a>
+</div>
+
 {% endblock %}

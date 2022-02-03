@@ -8,6 +8,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichFileType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class FlashType extends AbstractType
 {
@@ -22,7 +23,12 @@ class FlashType extends AbstractType
             ])
             ->add('reserved')
             ->add('online')
-            ->add('category', null, ['choice_label' => 'name']);
+            ->add('category', EntityType::class, [
+                'class' => Category::class,
+                'choice_label' => 'name',
+                'expanded' => true,
+
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

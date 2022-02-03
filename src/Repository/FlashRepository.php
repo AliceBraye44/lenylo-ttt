@@ -19,6 +19,20 @@ class FlashRepository extends ServiceEntityRepository
         parent::__construct($registry, Flash::class);
     }
 
+
+    public function findLikeName(?string $name): ?array
+    {
+        $queryBuilder = $this->createQueryBuilder('d')
+            ->where('d.name LIKE :name')
+            ->setParameter('name', '%' . $name . '%')
+            ->orderBy('d.name', 'ASC')
+            ->getQuery();
+
+        return $queryBuilder->getResult();
+    }
+
+
+
     // /**
     //  * @return Flash[] Returns an array of Flash objects
     //  */

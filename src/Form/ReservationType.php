@@ -15,13 +15,15 @@ class ReservationType extends AbstractType
             ->add('firstname')
             ->add('lastname')
             ->add('pronoun')
+            ->add('email')
+            ->add('telephone')
             ->add('major')
             ->add('firstTatoo')
             ->add('location')
             ->add('size')
             ->add('date')
             ->add('accepted')
-            ->add('flash')
+            ->add('flash', null, ['choice_label' => 'name']);
         ;
     }
 
