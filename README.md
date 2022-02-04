@@ -1,11 +1,5 @@
 ## Checkpoint 4 - Leny Lo ttt
 
-<p align="left">
-  <img src="/assets/flamviolet.png" alt="Size Limit CLI" width="200">
-</p>
-
-<br/>
-
 ## Présentation
 
 Ce projet est un site de réservations de tatouage. Il se détient un espace administarteur pour gérer les flahs, les categories et visualiser les demandes de réservations effectuées.
