@@ -22,6 +22,7 @@ Ce projet est un site de réservations de tatouage. Il propose un espace adminis
 3. Go `localhost:8000/login`
 4. Identifiant admin  braye.alice@gmail.com . Pour se connecter rendez-vous sur /login .
 
+Certaines pages sont prévues pour une v2 !
 
 ## Built With
 
