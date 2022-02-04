@@ -2,7 +2,7 @@
 
 ## Présentation
 
-Ce projet est un site de réservations de tatouage. Il se détient un espace administarteur pour gérer les flahs, les categories et visualiser les demandes de réservations effectuées.
+Ce projet est un site de réservations de tatouage. Il propose un espace administarteur pour gérer les flashs, les categories et gérer les demandes de réservations effectuées.
 
 ### Installer le projet
 
