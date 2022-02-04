@@ -28,4 +28,4 @@ Ce projet est un site de réservations de tatouage. Il propose un espace adminis
 - [Symfony](https://github.com/symfony/symfony)
 - [Sass-Lint](https://github.com/sasstools/sass-lint)
 - [VichUploader](https://github.com/dustin10/VichUploaderBundle)
-- [Materializecss] (https://materializecss.com/)
+- [Materializecss](https://materializecss.com/)
